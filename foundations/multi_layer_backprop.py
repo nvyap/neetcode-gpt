@@ -23,10 +23,11 @@ class Solution:
         W2 = np.array(W2)
         b2 = np.array(b2)
         y_true = np.array(y_true)
+
         # Forward pass
-        z1 = x @ W1.T + b1          # pre-activation layer 1
+        z1 = np.dot(x,W1.T) + b1          # pre-activation layer 1
         a1 = np.maximum(0, z1)       # ReLU activation
-        z2 = a1 @ W2.T + b2          # output (predictions)
+        z2 = np.dot(a1,W2.T) + b2          # output (predictions)
         loss = np.mean((z2 - y_true) ** 2)
 
         # Backward pass
@@ -48,4 +49,6 @@ class Solution:
             'dW2': np.round(dW2, 4).tolist(),
             'db2': np.round(db2, 4).tolist(),
         }
-        
+
+
+
